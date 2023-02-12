@@ -25,28 +25,34 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees/{employeeId}")
-    public Employee getEmployee(@PathVariable(name="employeeId")Long employeeId) {
+    public Employee getEmployee(@PathVariable(name = "employeeId") Long employeeId) {
         return employeeService.getEmployee(employeeId);
     }
 
     @PostMapping("/employees")
-    public void saveEmployee(Employee employee){
+    public void saveEmployee(Employee employee) {
         employeeService.saveEmployee(employee);
         System.out.println("Employee Saved Successfully");
     }
 
     @DeleteMapping("/employees/{employeeId}")
-    public void deleteEmployee(@PathVariable(name="employeeId")Long employeeId){
-        employeeService.deleteEmployee(employeeId);
-        System.out.println("Employee Deleted Successfully");
+    public void deleteEmployee(@PathVariable(name = "employeeId") Long employeeId) {
+        Employee emp = employeeService.getEmployee(employeeId);
+        // Only when the employeeId exists, perform deletion.
+        if (emp != null) {
+            employeeService.deleteEmployee(employeeId);
+            System.out.println("Employee Deleted Successfully");
+        }
     }
 
     @PutMapping("/employees/{employeeId}")
     public void updateEmployee(@RequestBody Employee employee,
-                               @PathVariable(name="employeeId")Long employeeId){
+            @PathVariable(name = "employeeId") Long employeeId) {
         Employee emp = employeeService.getEmployee(employeeId);
-        if(emp != null){
+        // Only when the employeeId exists, perform update.
+        if (emp != null) {
             employeeService.updateEmployee(employee);
+            System.out.println("Employee Updated Successfully");
         }
 
     }

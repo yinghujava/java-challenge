@@ -1,52 +1,26 @@
-### How to use this spring-boot project
+### What I did
+- EmployeeController.java
+  - Added check for deleteEmployee and updateEmployee that only when employeeId exists will perform deletion/update.
+- Employee.java
+  - Move @Getter and @Setter to class level.
+- EmployeeNotFoundException.java
+  - Newly added for dealing with the situation when the employeeId does not exist.
+- EmployeeService.java
+  - Changed the return type of method getEmployee from Employee to <Optional> Employee so that it is easier to know there is a risk of getting null wehn calling the method.
+- EmployeeServiceImpl.java
+  - Added @Override to take advantage from compiler checking.
+  - Added the logic for method of getEmployee that only fetching the employeeId when it exists and when the employeeId requested does not exist inside the database, throw error. 
+- ApiDemoApplicationTests.java
+  - Added the tests for every method inside the EmployeeController.java.
 
-- Install packages with `mvn package`
-- Run `mvn spring-boot:run` for starting the application (or use your IDE)
+### What I would have done if having more time
 
-Application (with the embedded H2 database) is ready to be used ! You can access the url below for testing it :
-
-- Swagger UI : http://localhost:8080/swagger-ui.html
-- H2 UI : http://localhost:8080/h2-console
-
-> Don't forget to set the `JDBC URL` value as `jdbc:h2:mem:testdb` for H2 UI.
-
-
-
-### Instructions
-
-- download the zip file of this project
-- create a repository in your own github named 'java-challenge'
-- clone your repository in a folder on your machine
-- extract the zip file in this folder
-- commit and push
-
-- Enhance the code in any ways you can see, you are free! Some possibilities:
-  - Add tests
-  - Change syntax
-  - Protect controller end points
-  - Add caching logic for database calls
-  - Improve doc and comments
-  - Fix any bug you might find
-- Edit readme.md and add any comments. It can be about what you did, what you would have done if you had more time, etc.
-- Send us the link of your repository.
-
-#### Restrictions
-- use java 8
+- Add logic to deal with token
+- Add access limit by integrating with Spring Security
+- Add swagger annotations
+- Try the new version of Swagger 3(OpenAPI 3)
 
 
-#### What we will look for
-- Readability of your code
-- Documentation
-- Comments in your code 
-- Appropriate usage of spring boot
-- Appropriate usage of packages
-- Is the application running as expected
-- No performance issues
+#### My experience in Java
 
-#### Your experience in Java
-
-Please let us know more about your Java experience in a few sentences. For example:
-
-- I have 3 years experience in Java and I started to use Spring Boot from last year
-- I'm a beginner and just recently learned Spring Boot
-- I know Spring Boot very well and have been using it for many years
+- I have been using Java for many years mainly with Android development and just began to learn Spring Boot.
